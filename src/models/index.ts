@@ -1,19 +1,26 @@
 // En un archivo como src/models/index.ts
-
+// 1. Importar todos los modelos
 import Usuario from './Usuario'
 import Rol from './Rol'
 import Pedido from './Pedido'
+import Producto from './Producto'
+import DetallePedido from './DetallePedido'
+import Consulta from './Consulta'
+import ReporteGenerado from './ReporteGenerado'
 
-// Un Rol puede tener muchos Usuarios
-Rol.hasMany(Usuario, {foreignKey: 'id_rol'})
+// 2. Importar la función que crea las asociaciones
+import {initAssociations} from './associations'
 
-// Un Usuario pertenece a un solo Rol
-Usuario.belongsTo(Rol, {foreignKey: 'id_rol'})
+// 3. Ejecutar la función de asociaciones
+initAssociations()
 
-// Un Usuario puede tener muchos Pedidos
-Usuario.hasMany(Pedido, {foreignKey: 'id_usuario'})
-
-// Un Pedido pertenece a un solo Usuario
-Pedido.belongsTo(Usuario, {foreignKey: 'id_usuario'})
-
-// Y así con todas las demás relaciones...
+// 4. Exportar todo para que el resto de la app lo use
+export {
+  Usuario,
+  Rol,
+  Pedido,
+  Producto,
+  DetallePedido,
+  Consulta,
+  ReporteGenerado,
+}

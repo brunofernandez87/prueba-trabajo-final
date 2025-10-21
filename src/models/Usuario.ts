@@ -1,7 +1,14 @@
-import {DataTypes, Model} from 'sequelize'
+import {DataTypes, Model, Optional} from 'sequelize'
 import sequelize from '../config/db'
 import UsuarioAttributes from './Interface/usuarioAttributes'
-class Usuario extends Model<UsuarioAttributes> implements UsuarioAttributes {
+type UsuarioCreationAttributes = Optional<
+  UsuarioAttributes,
+  'id_usuario' | 'creado_en'
+>
+class Usuario
+  extends Model<UsuarioAttributes, UsuarioCreationAttributes>
+  implements UsuarioAttributes
+{
   public id_usuario!: number
   public nombre!: string
   public email!: string
