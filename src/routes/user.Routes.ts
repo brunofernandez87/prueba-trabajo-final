@@ -1,14 +1,14 @@
-import { Router } from "express";
-import { registerUser, loginUser } from "../controllers/user.Controller";
+import {Router} from 'express'
+import {registerUser, loginUser} from '../controllers/user.Controller'
 
-const router = Router();
+const router = Router()
 
 // Ruta para Registrar un nuevo usuario
 // POST /api/users/register
-router.post("/register", registerUser);
+router.post('/register', registerUser)
 
 // Ruta para Iniciar Sesión
 // POST /api/users/login
-router.post("/login", loginUser);
+router.post('/login', loginUser)
 
-export default router;
+export default router

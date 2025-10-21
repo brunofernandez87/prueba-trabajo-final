@@ -1,4 +1,4 @@
-import { DataTypes, Model } from 'sequelize'
+import {DataTypes, Model} from 'sequelize'
 import sequelize from '../config/db'
 import UsuarioAttributes from './Interface/usuarioAttributes'
 class Usuario extends Model<UsuarioAttributes> implements UsuarioAttributes {

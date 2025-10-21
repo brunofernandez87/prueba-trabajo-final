@@ -1,4 +1,4 @@
-import { DataTypes, Model } from 'sequelize'
+import {DataTypes, Model} from 'sequelize'
 import sequelize from '../config/db'
 import PedidoAttributes from './Interface/pedidoAttributes'
 class Pedido extends Model<PedidoAttributes> implements PedidoAttributes {

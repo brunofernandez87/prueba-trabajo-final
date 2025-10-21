@@ -1,4 +1,4 @@
-import { DataTypes, Model } from 'sequelize'
+import {DataTypes, Model} from 'sequelize'
 import sequelize from '../config/db'
 import ProductoAttributes from './Interface/productoAttributes'
 class Producto extends Model<ProductoAttributes> implements ProductoAttributes {

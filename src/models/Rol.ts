@@ -1,4 +1,4 @@
-import { DataTypes, Model, Optional } from 'sequelize'
+import {DataTypes, Model, Optional} from 'sequelize'
 import sequelize from '../config/db'
 import RolAttributes from './Interface/rolAttributes'
 

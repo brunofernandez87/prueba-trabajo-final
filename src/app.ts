@@ -1,4 +1,4 @@
-import express, { Application, Request, Response } from 'express'
+import express, {Application, Request, Response} from 'express'
 import cors from 'cors'
 import Usuario from './models/Usuario'
 import Rol from './models/Rol'
@@ -13,13 +13,13 @@ app.use(express.json())
 app.get('/', (req: Request, res: Response) => {
   res
     .status(200)
-    .json({ message: '🚀 API de Agro-Insumos funcionando correctamente' })
+    .json({message: '🚀 API de Agro-Insumos funcionando correctamente'})
 })
 
 // --- RUTA DE PRUEBA DE ASOCIACIONES (la podés dejar o borrar) ---
 app.get('/test-user/:id', async (req: Request, res: Response) => {
   try {
-    const { id } = req.params
+    const {id} = req.params
     const usuario = await Usuario.findByPk(id, {
       include: [
         {
@@ -30,13 +30,13 @@ app.get('/test-user/:id', async (req: Request, res: Response) => {
     })
 
     if (!usuario) {
-      return res.status(404).json({ message: 'Usuario no encontrado' })
+      return res.status(404).json({message: 'Usuario no encontrado'})
     }
 
     res.status(200).json(usuario)
   } catch (error) {
     console.error(error)
-    res.status(500).json({ message: 'Error en el servidor' })
+    res.status(500).json({message: 'Error en el servidor'})
   }
 })
 
