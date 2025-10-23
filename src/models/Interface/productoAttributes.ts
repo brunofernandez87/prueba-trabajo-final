@@ -7,3 +7,4 @@ interface ProductoAttributes {
   creado_en: Date
 }
 export default ProductoAttributes
+// agregar categoria: string

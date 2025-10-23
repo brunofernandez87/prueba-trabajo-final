@@ -1,0 +1,72 @@
+[
+  {
+    "id_consulta": 1,
+    "id_usuario": "dpitchers0",
+    "id_producto": "Water Bottle with Built-in Fruit Infuser",
+    "mensaje": "vel nisl duis ac nibh fusce lacus purus aliquet at feugiat non pretium quis",
+    "fecha_consulta": "6/19/2025"
+  },
+  {
+    "id_consulta": 2,
+    "id_usuario": "dskade1",
+    "id_producto": "Cauliflower Crust Pizza",
+    "mensaje": "nullam molestie nibh in lectus pellentesque at nulla suspendisse potenti cras in purus",
+    "fecha_consulta": "3/23/2025"
+  },
+  {
+    "id_consulta": 3,
+    "id_usuario": "tsudlow2",
+    "id_producto": "Feta Cheese Crumbles",
+    "mensaje": "in felis donec semper sapien a libero nam dui proin",
+    "fecha_consulta": "3/15/2025"
+  },
+  {
+    "id_consulta": 4,
+    "id_usuario": "hkleiner3",
+    "id_producto": "Winter Insulated Jacket",
+    "mensaje": "lorem quisque ut erat curabitur gravida nisi at nibh in hac",
+    "fecha_consulta": "3/19/2025"
+  },
+  {
+    "id_consulta": 5,
+    "id_usuario": "sboxhill4",
+    "id_producto": "Herbed Mushroom Risotto",
+    "mensaje": "in magna bibendum imperdiet nullam orci pede venenatis non sodales sed tincidunt",
+    "fecha_consulta": "10/17/2025"
+  },
+  {
+    "id_consulta": 6,
+    "id_usuario": "bcaughte5",
+    "id_producto": "Pet Food Storage Container",
+    "mensaje": "hac habitasse platea dictumst aliquam augue quam sollicitudin vitae consectetuer eget rutrum at lorem integer tincidunt ante",
+    "fecha_consulta": "10/25/2024"
+  },
+  {
+    "id_consulta": 7,
+    "id_usuario": "twinning6",
+    "id_producto": "Window Bird Feeder with Suction Cups",
+    "mensaje": "turpis enim blandit mi in porttitor pede justo eu massa donec dapibus duis at velit eu est congue elementum in",
+    "fecha_consulta": "3/9/2025"
+  },
+  {
+    "id_consulta": 8,
+    "id_usuario": "tdedomenici7",
+    "id_producto": "Cranberry Juice",
+    "mensaje": "pede libero quis orci nullam molestie nibh in lectus pellentesque at nulla suspendisse potenti cras in",
+    "fecha_consulta": "8/4/2025"
+  },
+  {
+    "id_consulta": 9,
+    "id_usuario": "vmccrostie8",
+    "id_producto": "Rice Pilaf Mix",
+    "mensaje": "velit nec nisi vulputate nonummy maecenas tincidunt lacus at velit vivamus vel nulla eget eros elementum pellentesque quisque porta volutpat",
+    "fecha_consulta": "3/20/2025"
+  },
+  {
+    "id_consulta": 10,
+    "id_usuario": "ddowears9",
+    "id_producto": "Chipotle Black Bean Burger",
+    "mensaje": "massa tempor convallis nulla neque libero convallis eget eleifend luctus ultricies eu nibh quisque id justo sit amet sapien",
+    "fecha_consulta": "5/14/2025"
+  }
+]

@@ -6,3 +6,5 @@ interface ReporteGeneradoAttributes {
   parametros_usados: object | null
 }
 export default ReporteGeneradoAttributes
+// sacar tipo_reporte
+// sacar parametros_usados

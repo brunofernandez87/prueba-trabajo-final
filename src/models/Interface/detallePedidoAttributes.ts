@@ -6,3 +6,4 @@ interface DetallePedidoAttributes {
   precio_unitario: number
 }
 export default DetallePedidoAttributes
+// cambiar por pedido solo se torna confuso con el nombre detalle pedido

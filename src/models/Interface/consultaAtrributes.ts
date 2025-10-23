@@ -6,3 +6,4 @@ interface ConsultaAttributes {
   fecha_consulta: Date
 }
 export default ConsultaAttributes
+// consultas de whatsapp

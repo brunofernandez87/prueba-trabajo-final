@@ -1,0 +1,62 @@
+[
+  {
+    "id_reporte": 1,
+    "fecha_generacion": "12/9/2024",
+    "generado_por_usuario": "ltalks0",
+    "parametros_usados": []
+  },
+  {
+    "id_reporte": 2,
+    "fecha_generacion": "9/28/2025",
+    "generado_por_usuario": "lvilliers1",
+    "parametros_usados": [{}, {}]
+  },
+  {
+    "id_reporte": 3,
+    "fecha_generacion": "8/23/2025",
+    "generado_por_usuario": "imarzelle2",
+    "parametros_usados": [{}, {}, {}]
+  },
+  {
+    "id_reporte": 4,
+    "fecha_generacion": "1/13/2025",
+    "generado_por_usuario": "tlaverty3",
+    "parametros_usados": [{}, {}, {}]
+  },
+  {
+    "id_reporte": 5,
+    "fecha_generacion": "9/4/2025",
+    "generado_por_usuario": "nmenel4",
+    "parametros_usados": [{}, {}, {}]
+  },
+  {
+    "id_reporte": 6,
+    "fecha_generacion": "2/18/2025",
+    "generado_por_usuario": "hconlon5",
+    "parametros_usados": []
+  },
+  {
+    "id_reporte": 7,
+    "fecha_generacion": "6/27/2025",
+    "generado_por_usuario": "swybrew6",
+    "parametros_usados": [{}]
+  },
+  {
+    "id_reporte": 8,
+    "fecha_generacion": "6/16/2025",
+    "generado_por_usuario": "aquemby7",
+    "parametros_usados": [{}]
+  },
+  {
+    "id_reporte": 9,
+    "fecha_generacion": "4/27/2025",
+    "generado_por_usuario": "eclayfield8",
+    "parametros_usados": [{}, {}, {}]
+  },
+  {
+    "id_reporte": 10,
+    "fecha_generacion": "2/23/2025",
+    "generado_por_usuario": "jhatton9",
+    "parametros_usados": [{}]
+  }
+]

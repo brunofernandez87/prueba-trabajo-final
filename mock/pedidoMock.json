@@ -1,0 +1,72 @@
+[
+  {
+    "id_pedido": 1,
+    "id_usuario": "mwoolforde0",
+    "fecha": "4/26/2025",
+    "estado": "entregado",
+    "total": 4.99
+  },
+  {
+    "id_pedido": 2,
+    "id_usuario": "dweedenburg1",
+    "fecha": "1/31/2025",
+    "estado": "en camino",
+    "total": 9.99
+  },
+  {
+    "id_pedido": 3,
+    "id_usuario": "rsthill2",
+    "fecha": "8/28/2025",
+    "estado": "en preparacion",
+    "total": 3.49
+  },
+  {
+    "id_pedido": 4,
+    "id_usuario": "brounce3",
+    "fecha": "1/22/2025",
+    "estado": "entregado",
+    "total": 30
+  },
+  {
+    "id_pedido": 5,
+    "id_usuario": "eworcester4",
+    "fecha": "9/24/2025",
+    "estado": "en camino",
+    "total": 24.99
+  },
+  {
+    "id_pedido": 6,
+    "id_usuario": "dfleisch5",
+    "fecha": "6/27/2025",
+    "estado": "en preparacion",
+    "total": 49.99
+  },
+  {
+    "id_pedido": 7,
+    "id_usuario": "alafrentz6",
+    "fecha": "2/18/2025",
+    "estado": "entregado",
+    "total": 4.49
+  },
+  {
+    "id_pedido": 8,
+    "id_usuario": "kwanklyn7",
+    "fecha": "7/2/2025",
+    "estado": "en camino",
+    "total": 39.99
+  },
+  {
+    "id_pedido": 9,
+    "id_usuario": "rpenhall8",
+    "fecha": "11/10/2024",
+    "estado": "en preparacion",
+    "total": 39.99
+  },
+  {
+    "id_pedido": 10,
+    "id_usuario": "stipling9",
+    "fecha": "11/8/2024",
+    "estado": "entregado",
+    "total": 39.99
+  }
+]

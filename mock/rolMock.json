@@ -1,0 +1,5 @@
+[
+  {"id_rol": 1, "nombre": "cliente"},
+  {"id_rol": 2, "nombre": "vendedor"},
+  {"id_rol": 3, "nombre": "admin"}
+]

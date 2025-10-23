@@ -1,0 +1,72 @@
+[
+  {
+    "id_detalle": 1,
+    "id_pedido": 6,
+    "id_producto": "Natural Soy Candles",
+    "cantidad": 4,
+    "precio": 19.99
+  },
+  {
+    "id_detalle": 2,
+    "id_pedido": 4,
+    "id_producto": "Smoky BBQ Jackfruit",
+    "cantidad": 2,
+    "precio": 4.99
+  },
+  {
+    "id_detalle": 3,
+    "id_pedido": 9,
+    "id_producto": "Camping Chair with Cooler",
+    "cantidad": 7,
+    "precio": 49.99
+  },
+  {
+    "id_detalle": 4,
+    "id_pedido": 3,
+    "id_producto": "Faux Fur Throw Blanket",
+    "cantidad": 4,
+    "precio": 39.99
+  },
+  {
+    "id_detalle": 5,
+    "id_pedido": 4,
+    "id_producto": "Bamboo Charcoal Air Purifier Bags",
+    "cantidad": 6,
+    "precio": 12.99
+  },
+  {
+    "id_detalle": 6,
+    "id_pedido": 5,
+    "id_producto": "Peanut Butter Granola",
+    "cantidad": 3,
+    "precio": 4.99
+  },
+  {
+    "id_detalle": 7,
+    "id_pedido": 1,
+    "id_producto": "Self-Cleaning Water Bottle",
+    "cantidad": 9,
+    "precio": 49.99
+  },
+  {
+    "id_detalle": 8,
+    "id_pedido": 8,
+    "id_producto": "Folding Table",
+    "cantidad": 7,
+    "precio": 59.99
+  },
+  {
+    "id_detalle": 9,
+    "id_pedido": 8,
+    "id_producto": "Coconut Bowls Set",
+    "cantidad": 7,
+    "precio": 22.99
+  },
+  {
+    "id_detalle": 10,
+    "id_pedido": 7,
+    "id_producto": "Almond Butter Cups",
+    "cantidad": 6,
+    "precio": 3.29
+  }
+]
