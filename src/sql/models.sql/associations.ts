@@ -10,8 +10,6 @@ export function initAssociations() {
   Rol.hasMany(Usuario, {foreignKey: 'id_rol'})
   Usuario.belongsTo(Rol, {foreignKey: 'id_rol'})
 
-  // ... todas las demás relaciones
-
   // Relación: Rol <--> Usuario (Uno a Muchos)
   Rol.hasMany(Usuario, {foreignKey: 'id_rol'})
   Usuario.belongsTo(Rol, {foreignKey: 'id_rol'})

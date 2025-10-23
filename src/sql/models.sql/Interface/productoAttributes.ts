@@ -4,7 +4,7 @@ interface ProductoAttributes {
   descripcion: string | null
   precio: number
   stock: number
-  creado_en: string
+  creado_en: Date
 }
 export default ProductoAttributes
 // agregar categoria: string

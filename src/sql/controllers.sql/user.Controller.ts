@@ -1,5 +1,5 @@
 import {Request, Response} from 'express'
-import * as userService from '../services/user.Service'
+import * as userService from '../services.sql/user.Service'
 
 // Controlador para el REGISTRO
 export const registerUser = async (req: Request, res: Response) => {
@@ -8,11 +8,9 @@ export const registerUser = async (req: Request, res: Response) => {
     res
       .status(201)
       .json({message: 'Usuario registrado con éxito', user: newUser})
-  } catch (error) {
-    if (error instanceof Error) {
-      res.status(400).json({message: error.message})
-    }
+  } catch (error: any) {
     // Manejo de errores (ej: email duplicado)
+    res.status(400).json({message: error.message})
   }
 }
 
@@ -20,12 +18,10 @@ export const registerUser = async (req: Request, res: Response) => {
 export const loginUser = async (req: Request, res: Response) => {
   try {
     const {email, password} = req.body
-    const usuario = await userService.login(email, password)
-    const usuarioname = usuario.nombre
-    res.status(200).json({message: 'Login exitoso', usuarioname})
-  } catch (error) {
-    if (error instanceof Error) {
-      res.status(401).json({message: error.message})
-    }
+    const {token} = await userService.login(email, password)
+    res.status(200).json({message: 'Login exitoso', token: token})
+  } catch (error: any) {
+    // Manejo de errores (ej: credenciales inválidas)
+    res.status(401).json({message: error.message})
   }
 }

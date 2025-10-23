@@ -1,9 +1,9 @@
 import express, {Application, Request, Response} from 'express'
 import cors from 'cors'
-import Usuario from './models/Usuario'
-import Rol from './models/Rol'
-import userRoutes from './routes/user.Routes' // <--- AÑADIR ESTA LÍNEA 1
-import productRoutes from './routes/product.Routes' // <-- 1. IMPORTAR RUTAS DE PRODUCTOS
+import Usuario from './models.sql/Usuario'
+import Rol from './models.sql/Rol'
+import userRoutes from './routes.sql/user.Routes' // <--- AÑADIR ESTA LÍNEA 1
+import productRoutes from './routes.sql/product.Routes' // <-- 1. IMPORTAR RUTAS DE PRODUCTOS
 
 const app: Application = express()
 

@@ -1,7 +1,7 @@
 import app from './app' // Import sin extensión para TS/Node en CJS
 import sequelize from './config/db'
 import {ensureDatabase} from './utils/initDatabase'
-import './models/associations'
+import './models.sql/associations'
 
 // Usamos una variable de entorno para el puerto o un valor por defecto
 const PORT = process.env.PORT || 3001

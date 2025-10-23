@@ -8,6 +8,12 @@ import DetallePedido from './DetallePedido'
 import Consulta from './Consulta'
 import ReporteGenerado from './ReporteGenerado'
 
+// 2. Importar la función que crea las asociaciones
+import {initAssociations} from './associations'
+
+// 3. Ejecutar la función de asociaciones
+initAssociations()
+
 // 4. Exportar todo para que el resto de la app lo use
 export {
   Usuario,

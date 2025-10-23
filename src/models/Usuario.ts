@@ -1,61 +1,20 @@
-import {DataTypes, Model, Optional} from 'sequelize'
-import sequelize from '../config/db'
 import UsuarioAttributes from './Interface/usuarioAttributes'
-type UsuarioCreationAttributes = Optional<
-  UsuarioAttributes,
-  'id_usuario' | 'creado_en'
->
-class Usuario
-  extends Model<UsuarioAttributes, UsuarioCreationAttributes>
-  implements UsuarioAttributes
-{
+
+class Usuario implements UsuarioAttributes {
   public id_usuario!: number
   public nombre!: string
   public email!: string
   public password_hash!: string
-  public id_rol!: number | null
-  public readonly creado_en!: Date
+  public id_rol!: number | 1
+  public readonly creado_en!: string
+  constructor(userData: Usuario) {
+    this.id_usuario = userData.id_usuario
+    this.nombre = userData.nombre
+    this.email = userData.email
+    this.password_hash = userData.password_hash
+    this.id_rol = 1
+    this.creado_en = '23/10/25'
+  }
 }
-
-Usuario.init(
-  {
-    id_usuario: {
-      type: DataTypes.INTEGER,
-      autoIncrement: true,
-      primaryKey: true,
-      unique: true,
-    },
-    nombre: {
-      type: DataTypes.STRING(100),
-      allowNull: false,
-    },
-    email: {
-      type: DataTypes.STRING(100),
-      allowNull: false,
-      unique: true,
-    },
-    password_hash: {
-      type: DataTypes.STRING(255),
-      allowNull: false,
-    },
-    id_rol: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: 'Roles', // Nombre de la tabla a la que referencia
-        key: 'id_rol',
-      },
-    },
-    creado_en: {
-      type: DataTypes.DATE,
-      defaultValue: DataTypes.NOW,
-      allowNull: false,
-    },
-  },
-  {
-    sequelize,
-    tableName: 'Usuarios',
-    timestamps: false,
-  },
-)
 
 export default Usuario

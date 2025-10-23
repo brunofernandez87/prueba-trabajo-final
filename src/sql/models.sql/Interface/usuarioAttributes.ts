@@ -4,6 +4,6 @@ interface UsuarioAttributes {
   email: string
   password_hash: string
   id_rol: number | null
-  creado_en: string
+  creado_en: Date
 }
 export default UsuarioAttributes
