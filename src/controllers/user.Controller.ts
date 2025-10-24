@@ -12,7 +12,6 @@ export const registerUser = async (req: Request, res: Response) => {
     if (error instanceof Error) {
       res.status(400).json({message: error.message})
     }
-    // Manejo de errores (ej: email duplicado)
   }
 }
 

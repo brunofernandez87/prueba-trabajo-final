@@ -58,7 +58,6 @@ export const updateProduct = async (req: Request, res: Response) => {
 
 export const deleteProduct = async (req: Request, res: Response) => {
   try {
-    //                                          👇 ¡AQUÍ!
     await productService.deleteProduct(parseInt(req.params.id as string))
     res.status(200).json({message: 'Producto eliminado con éxito'})
   } catch (error) {
