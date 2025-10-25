@@ -1,6 +1,7 @@
 import {Pedido} from '../models'
 import data from '../mock/pedidoMock.json'
 export const pedido = async () => {
+  //creo que no es necesario mostrar todos los pedidos ya que se deberian mostrar por ID
   return data
 }
 export const pedidoID = async (id: number) => {
