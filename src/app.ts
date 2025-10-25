@@ -4,7 +4,8 @@ import userRoutes from './routes/user.Routes'
 import productRoutes from './routes/product.Routes'
 import reporteRoute from './routes/reporte.Routes'
 import pedidoRoutes from './routes/pedido.Routes'
-import detallePedidoRoutes from './routes/pedidoDetalle.route'
+import detallePedidoRoutes from './routes/detallePedido.Routes'
+import consultaRoutes from './routes/consulta.Routes'
 
 const app: Application = express()
 
@@ -21,5 +22,6 @@ app.use('/api/products', productRoutes)
 app.use('/api/reportes', reporteRoute)
 app.use('api/pedido', pedidoRoutes)
 app.use('/api/pedido', detallePedidoRoutes)
+app.use('/api/consulta', consultaRoutes)
 
 export default app

@@ -3,7 +3,7 @@ interface ConsultaAttributes {
   id_usuario: number
   id_producto: number
   mensaje: string
-  fecha_consulta: Date
+  fecha_consulta: string
 }
 export default ConsultaAttributes
 // consultas de whatsapp
