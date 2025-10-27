@@ -38,7 +38,7 @@ export const deleteProduct = async (id: number) => {
   const product = await getProductById(id) // Verificamos si existe
   if (product) {
     const a = data.findIndex(d => d.id_producto === id)
-    data.splice(a)
+    if (a >= 0) data.splice(a, 1)
     return {message: 'Producto eliminado correctamente'}
   }
   return {message: 'Producto no encontrado'}

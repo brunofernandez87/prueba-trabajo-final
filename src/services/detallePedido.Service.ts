@@ -23,7 +23,7 @@ export const eliminarDetalle = async (id: number) => {
   const detalle = await DetallePedidoID(id)
   if (detalle) {
     const detalleIN = data.findIndex(d => d.id_detalle === id)
-    data.slice(detalleIN)
+    if (detalleIN >= 0) data.splice(detalleIN, 1)
     return {message: 'Detalle eliminado con exito'}
   }
 }

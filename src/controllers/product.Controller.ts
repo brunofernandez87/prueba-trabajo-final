@@ -14,7 +14,6 @@ export const getAllProducts = async (req: Request, res: Response) => {
 
 export const getProductById = async (req: Request, res: Response) => {
   try {
-    //                                          👇 ¡AQUÍ!
     const product = await productService.getProductById(
       parseInt(req.params.id as string),
     )

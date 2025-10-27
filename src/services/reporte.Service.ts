@@ -21,7 +21,7 @@ export const deleteReporte = async (id: number) => {
   const reporte = await findReporte(id)
   if (reporte) {
     const reporteI = data.findIndex(r => r.id_reporte === id)
-    data.slice(reporteI)
+    if (reporteI >= 0) data.splice(reporteI, 1)
     return {message: 'Reporte Eliminado'}
   }
   throw new Error('reporte no existe')

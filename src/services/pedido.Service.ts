@@ -12,13 +12,13 @@ export const pedidoID = async (id: number) => {
   return pedido
 }
 export const agregarPedido = async (pedidoData: Pedido) => {
-  const pedido = pedidoID(pedidoData.id_pedido)
-  if (!pedido) {
-    const pedido = await new Pedido(pedidoData)
-    data.push(pedido)
-    return pedido
+  const existing = await pedidoID(pedidoData.id_pedido).catch(() => null)
+  if (existing) {
+    throw new Error('Pedido ya existente')
   }
-  throw new Error('Pedido ya existente')
+  const pedido = new Pedido(pedidoData)
+  data.push(pedido)
+  return pedido
 }
 export const eliminarPedido = async (id: number) => {
   const pedido = await pedidoID(id)
@@ -26,7 +26,7 @@ export const eliminarPedido = async (id: number) => {
     throw new Error('Pedido no encontrado')
   }
   const pedidoIn = data.findIndex(p => p.id_pedido === id)
-  data.slice(pedidoIn)
+  if (pedidoIn >= 0) data.splice(pedidoIn, 1)
   return {message: 'Pedido eliminado con exito'}
 }
 export const actualizarPedido = async (id: number, pedidoData: Pedido) => {

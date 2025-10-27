@@ -32,8 +32,9 @@ export const borrar = async (email: string, password_raw: string) => {
     const usuario = data.findIndex(
       u => u.email === email && u.password_hash === password_raw,
     )
-    data.splice(usuario)
+    if (usuario >= 0) data.splice(usuario, 1)
     return {message: 'Usuario eliminado'}
   }
   return {message: 'Credenciales invalidas'}
 }
+//El login se hace con email y password_raw.
