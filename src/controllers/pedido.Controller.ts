@@ -34,6 +34,7 @@ export const eliminarPedido = async (req: Request, res: Response) => {
     }
   }
 }
+
 export const agregarPedido = async (req: Request, res: Response) => {
   try {
     const resultado = await PedidoService.agregarPedido(req.body)
@@ -47,7 +48,7 @@ export const agregarPedido = async (req: Request, res: Response) => {
 export const modificarPedido = async (req: Request, res: Response) => {
   try {
     const resultado = await PedidoService.actualizarPedido(
-      parseInt(req.params.id as string),
+      req.body.id_pedido,
       req.body,
     )
     res.status(200).json({message: 'pedido actualizado', resultado})
