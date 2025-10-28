@@ -21,7 +21,7 @@ app.use('/api/users', userRoutes)
 app.use('/api/products', productRoutes)
 app.use('/api/reportes', reporteRoute)
 app.use('/api/pedido', pedidoRoutes)
-app.use('/api/pedido', detallePedidoRoutes)
+app.use('/api/detalle', detallePedidoRoutes)
 app.use('/api/consulta', consultaRoutes)
 
 export default app

@@ -1,11 +1,11 @@
 import {DetallePedido} from '../models'
 import data from '../mock/detallepedidoMock.json'
 export const DetallePedidoID = async (id: number) => {
-  const detalle = data.find(d => d.id_pedido === id)
-  if (detalle) {
-    return detalle
+  const detalle = data.find(d => d.id_detalle === id)
+  if (!detalle) {
+    throw new Error('Detalle no encontrado')
   }
-  throw new Error('Detalle no encontrado')
+  return detalle
 }
 export const modificarDetalle = async (
   id: number,
@@ -17,7 +17,6 @@ export const modificarDetalle = async (
     detalle.precio_unitario = DetalleData.precio_unitario
     return detalle
   }
-  throw new Error('Detalle no encontrado')
 }
 export const eliminarDetalle = async (id: number) => {
   const detalle = await DetallePedidoID(id)
