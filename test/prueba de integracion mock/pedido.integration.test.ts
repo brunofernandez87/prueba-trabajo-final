@@ -17,7 +17,6 @@ describe('Pruebas de integración para Pedidos (Mock)', () => {
       const pedidoExistente = mockPedidos[0]
       const response = await request(app).get(
         `/api/pedido/${pedidoExistente.id_pedido}`,
-        s,
       )
       expect(response.status).toBe(200)
       expect(response.body).toEqual(pedidoExistente)
