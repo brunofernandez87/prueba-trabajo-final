@@ -6,7 +6,7 @@ describe('DetallePedido Service', () => {
     const detalle = await detalleService.DetallePedidoID(6)
     expect(detalle).toBeDefined()
     expect(detalle).toHaveProperty('id_pedido')
-    expect(detalle.id_pedido).toBe(6)
+    expect(detalle.id_detalle).toBe(6)
   })
 
   it('crearDetalle debería añadir y devolver el nuevo detalle', async () => {
