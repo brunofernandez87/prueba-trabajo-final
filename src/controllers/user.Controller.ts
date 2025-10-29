@@ -28,3 +28,13 @@ export const loginUser = async (req: Request, res: Response) => {
     }
   }
 }
+export const recuperarContraseña = async (req: Request, res: Response) => {
+  try {
+    await userService.recuperarContraseña(req.body.email)
+    res.status(200).json({message: 'contraseña restablecida'})
+  } catch (error) {
+    if (error instanceof Error) {
+      res.status(404).json(error.message)
+    }
+  }
+}
