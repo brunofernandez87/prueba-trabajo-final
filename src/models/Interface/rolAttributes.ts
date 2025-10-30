@@ -1,5 +1,5 @@
 interface RolAttributes {
   id_rol: number
-  nombre: string
+  name: string
 }
 export default RolAttributes

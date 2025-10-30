@@ -25,7 +25,7 @@ beforeAll(async () => {
   app = appModule
   request = supertest(app)
 })
-import mockUsuarios from '../../src/mock/usuariosMock.json'
+import mockUser from '../../src/mock/userMock.json'
 
 beforeEach(() => {
   mockSendMail.mockClear()
@@ -37,33 +37,31 @@ afterEach(() => {
 describe('Pruebas de integración para Usuarios (Mock)', () => {
   describe('POST /api/users/register', () => {
     it('Debería registrar un nuevo usuario con éxito', async () => {
-      const nuevoUsuario = {
-        id_usuario: 11,
-        nombre: 'Usuario Prueba',
+      const newUser = {
+        id_user: 11,
+        name: 'Usuario Prueba',
         email: 'prueba@test.com',
         password_hash: 'password123', // El mock no usa bcrypt
         id_rol: 1,
       }
 
-      const response = await request
-        .post('/api/users/register')
-        .send(nuevoUsuario)
+      const response = await request.post('/api/users/register').send(newUser)
 
       expect(response.status).toBe(201)
       expect(response.body.message).toBe('Usuario registrado con éxito')
       expect(response.body.user).toEqual(
         expect.objectContaining({
-          nombre: 'Usuario Prueba',
+          name: 'Usuario Prueba',
           email: 'prueba@test.com',
         }),
       )
     })
 
     it('Debería retornar un error si el email ya existe', async () => {
-      const usuarioExistente = mockUsuarios[0]
+      const userExisting = mockUser[0]
       const response = await request
         .post('/api/users/register')
-        .send(usuarioExistente)
+        .send(userExisting)
 
       expect(response.status).toBe(400)
       expect(response.body.message).toBe('El correo electrónico ya está en uso')
@@ -72,15 +70,15 @@ describe('Pruebas de integración para Usuarios (Mock)', () => {
 
   describe('POST /api/users/login', () => {
     it('Debería iniciar sesión con credenciales válidas', async () => {
-      const usuarioExistente = mockUsuarios[1]
+      const userExisting = mockUser[1]
       const response = await request.post('/api/users/login').send({
-        email: usuarioExistente.email,
-        password: usuarioExistente.password_hash, // El mock usa el hash como si fuera la contraseña raw
+        email: userExisting.email,
+        password: userExisting.password_hash, // El mock usa el hash como si fuera la contraseña raw
       })
 
       expect(response.status).toBe(200)
       expect(response.body.message).toBe('Login exitoso')
-      expect(response.body.usuarioname).toBe(usuarioExistente.nombre)
+      expect(response.body.username).toBe(userExisting.name)
     })
 
     it('Debería retornar un error con credenciales inválidas', async () => {
@@ -93,12 +91,12 @@ describe('Pruebas de integración para Usuarios (Mock)', () => {
       expect(response.body.message).toBe('Credenciales inválidas')
     })
   })
-  describe('POST /api/users/recuperar', () => {
+  describe('POST /api/users/recovery', () => {
     it('deberia mandar un mail para restablecer la contraseña', async () => {
-      const mock = mockUsuarios[0]
+      const mock = mockUser[0]
       const email = mock.email
       const response = await request
-        .post('/api/users/recuperar')
+        .post('/api/users/recovery')
         .send({email: email})
       console.log(response.error)
       expect(mockSendMail).toHaveBeenCalledOnce()
@@ -109,6 +107,17 @@ describe('Pruebas de integración para Usuarios (Mock)', () => {
         html: `<h1>contraseña restablecida a contra restaurar</h1>`,
       })
       expect(response.status).toBe(200)
+    })
+  })
+  describe('Post /api/users/delete', () => {
+    it('deberia eliminar el usuario con email y contraseña', async () => {
+      const userDelete = {...mockUser[0]}
+      const response = await request.post('/api/users/delete').send({
+        email: userDelete.email,
+        password: userDelete.password_hash,
+      })
+      expect(response.status).toBe(200)
+      expect(response.body.message).toBe('Usuario eliminado')
     })
   })
 })

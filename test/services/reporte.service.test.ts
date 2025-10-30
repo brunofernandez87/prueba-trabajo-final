@@ -1,24 +1,24 @@
 import {describe, it, expect} from 'vitest'
-import * as reporteService from '../../src/services/reporte.Service'
+import * as reportService from '../../src/services/report.Service'
 
 describe('Reporte Service', () => {
   it('reportes devuelve array', async () => {
-    const res = await reporteService.reportes()
+    const res = await reportService.reports()
     expect(Array.isArray(res)).toBe(true)
   })
 
   it('generarReporte y findReporte funcionan', async () => {
     const reporte: any = {
-      id_reporte: 777,
-      titulo: 'T',
+      id_report: 777,
+      title: 'T',
       descripcion: 'D',
-      fecha: '2025-10-26',
+      date: '2025-10-26',
     }
-    const created = await reporteService.generarReporte(reporte)
-    expect(created).toHaveProperty('id_reporte')
-    const found = await reporteService.findReporte(777)
-    expect(found).toHaveProperty('id_reporte')
-    const del = await reporteService.deleteReporte(777)
+    const created = await reportService.createReport(reporte)
+    expect(created).toHaveProperty('id_report')
+    const found = await reportService.findReport(777)
+    expect(found).toHaveProperty('id_report')
+    const del = await reportService.deleteReport(777)
     expect(del).toHaveProperty('message')
   })
 })

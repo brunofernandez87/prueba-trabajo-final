@@ -1,60 +1,57 @@
 import {describe, it, expect} from 'vitest'
 import request from 'supertest'
 import app from './../../src/app'
-import mockReportes from '../../src/mock/reporteMock.json'
+import mockReport from '../../src/mock/reportMock.json'
 
 describe('Pruebas de integración para Reportes (Mock)', () => {
-  describe('GET /api/reportes', () => {
+  describe('GET /api/report', () => {
     it('Debería retornar todos los reportes', async () => {
-      const response = await request(app).get('/api/reportes')
+      const response = await request(app).get('/api/report')
       expect(response.status).toBe(200)
-      expect(response.body).toEqual(mockReportes)
+      expect(response.body).toEqual(mockReport)
     })
   })
 
-  describe('GET /api/reportes/:id', () => {
+  describe('GET /api/report/:id', () => {
     it('Debería retornar un reporte específico si el id existe', async () => {
-      const reporteExistente = mockReportes[0]
+      const reportExisting = mockReport[0]
       const response = await request(app).get(
-        `/api/reportes/${reporteExistente.id_reporte}`,
+        `/api/report/${reportExisting?.id_report}`,
       )
       expect(response.status).toBe(200)
-      expect(response.body).toEqual(reporteExistente)
+      expect(response.body).toEqual(reportExisting)
     })
 
     it('Debería retornar un error si el reporte no existe', async () => {
-      const idInexistente = 9999
-      const response = await request(app).get(`/api/reportes/${idInexistente}`)
+      const id = 9999
+      const response = await request(app).get(`/api/report/${id}`)
       // El servicio no maneja el error 404, devuelve 500
       expect(response.status).toBe(500)
     })
   })
 
-  describe('POST /api/reportes', () => {
+  describe('POST /api/report', () => {
     it('Debería crear un nuevo reporte', async () => {
-      const nuevoReporte = {
-        id_reporte: 11,
-        fecha_generacion: '23/10/25',
-        generado_por_usuario: 1,
-        parametros_usados: [{}],
+      const newReport = {
+        id_report: 11,
+        date_generated: '23/10/25',
+        generated_by_user: 1,
       }
 
-      const response = await request(app)
-        .post('/api/reportes')
-        .send(nuevoReporte)
+      const response = await request(app).post('/api/report').send(newReport)
 
       expect(response.status).toBe(201)
       expect(response.body.message).toBe('reporte generado con exito')
-      expect(response.body.reporte).toEqual(nuevoReporte)
+      expect(response.body.report).toEqual(newReport)
     })
   })
 
-  describe('DELETE /api/reportes/:id', () => {
+  describe('DELETE /api/report/:id', () => {
     it('Debería eliminar un reporte existente', async () => {
       // Usamos un reporte que sabemos que existe para la prueba
-      const reporteAEliminar = mockReportes[2]
+      const reportDelete = mockReport[2]
       const response = await request(app).delete(
-        `/api/reportes/${reporteAEliminar.id_reporte}`,
+        `/api/report/${reportDelete.id_report}`,
       )
 
       expect(response.status).toBe(200)

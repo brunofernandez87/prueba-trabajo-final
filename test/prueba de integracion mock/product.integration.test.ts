@@ -1,25 +1,25 @@
 import {describe, it, expect} from 'vitest'
 import request from 'supertest'
 import app from './../../src/app'
-import mockProductos from '../../src/mock/productoMock.json'
+import mockProduct from '../../src/mock/productMock.json'
 
 describe('Pruebas de integración para productos (Mock)', () => {
   describe('GET /api/products', () => {
     it('Debería retornar todos los productos del mock', async () => {
       const response = await request(app).get('/api/products')
       expect(response.status).toBe(200)
-      expect(response.body).toEqual(mockProductos)
+      expect(response.body).toEqual(mockProduct)
     })
   })
 
   describe('GET /api/products/:id', () => {
     it('Debería retornar un producto específico si el id existe', async () => {
-      const productoExistente = mockProductos[0]
+      const productExisting = mockProduct[0]
       const response = await request(app).get(
-        `/api/products/${productoExistente.id_producto}`,
+        `/api/products/${productExisting?.id_product}`,
       )
       expect(response.status).toBe(200)
-      expect(response.body).toEqual(productoExistente)
+      expect(response.body).toEqual(productExisting)
     })
 
     it('Debería retornar un error 404 si el producto no existe', async () => {
@@ -32,29 +32,25 @@ describe('Pruebas de integración para productos (Mock)', () => {
 
   describe('POST /api/products', () => {
     it('Debería crear un nuevo producto y retornarlo', async () => {
-      const nuevoProducto = {
-        id_producto: 99,
-        nombre: 'Producto de prueba',
-        descripcion: 'Este es un producto de prueba',
-        precio: 100,
+      const newOrder = {
+        id_product: 99,
+        name: 'Producto de prueba',
+        description: 'Este es un producto de prueba',
+        price: 100,
         stock: 10,
-        categoria: 'Pruebas',
+        category: 'Pruebas',
       }
 
-      const response = await request(app)
-        .post('/api/products')
-        .send(nuevoProducto)
+      const response = await request(app).post('/api/products').send(newOrder)
 
       expect(response.status).toBe(201)
       expect(response.body.message).toBe('Producto creado con éxito')
-      expect(response.body.product).toEqual(
-        expect.objectContaining(nuevoProducto),
-      )
+      expect(response.body.product).toEqual(expect.objectContaining(newOrder))
 
       // Verificar que el producto fue realmente añadido (opcional, pero bueno para la integridad)
       const getResponse = await request(app).get('/api/products/99')
       expect(getResponse.status).toBe(200)
-      expect(getResponse.body).toEqual(expect.objectContaining(nuevoProducto))
+      expect(getResponse.body).toEqual(expect.objectContaining(newOrder))
     })
   })
 })

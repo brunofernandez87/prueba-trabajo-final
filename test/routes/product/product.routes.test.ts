@@ -18,14 +18,14 @@ describe('Products API', () => {
   it('GET /api/products/:id -> 200 and product object', async () => {
     const res = await request.get('/api/products/1')
     expect(res.status).toBe(200)
-    expect(res.body).toHaveProperty('id_producto')
-    expect(res.body.id_producto).toBe(1)
+    expect(res.body).toHaveProperty('id_product')
+    expect(res.body.id_product).toBe(1)
   })
 
   it('POST /api/products -> 201 create product', async () => {
     const payload = {
-      id_producto: 9999,
-      nombre: 'Test Product',
+      id_product: 9999,
+      name: 'Test Product',
       descripcion: 'Producto de prueba',
       categoria: 'Test',
       precio: 1.23,
@@ -34,21 +34,21 @@ describe('Products API', () => {
     const res = await request.post('/api/products').send(payload)
     expect(res.status).toBe(201)
     expect(res.body).toHaveProperty('message')
-    expect(res.body.product).toHaveProperty('id_producto')
-    expect(res.body.product.nombre).toBe('Test Product')
+    expect(res.body.product).toHaveProperty('id_product')
+    expect(res.body.product.name).toBe('Test Product')
   })
 
   it('PUT /api/products/:id -> 200 update product (protected)', async () => {
     const token = jwt.sign(
-      {id_usuario: 1, email: 'test@example.com'},
+      {id_user: 1, email: 'test@example.com'},
       process.env.JWT_SECRET as string,
     )
     const payload = {
-      nombre: 'Updated Name',
-      descripcion: 'Updated',
-      precio: 9.99,
+      name: 'Updated Name',
+      description: 'Updated',
+      price: 9.99,
       stock: 10,
-      categoria: 'Test',
+      category: 'Test',
     }
     const res = await request
       .put('/api/products/9999')
@@ -56,12 +56,12 @@ describe('Products API', () => {
       .send(payload)
     expect(res.status).toBe(200)
     expect(res.body).toHaveProperty('message')
-    expect(res.body.product.nombre || res.body.product).toBeDefined()
+    expect(res.body.product.name || res.body.product).toBeDefined()
   })
 
   it('DELETE /api/products/:id -> 200 delete product (protected)', async () => {
     const token = jwt.sign(
-      {id_usuario: 1, email: 'test@example.com'},
+      {id_user: 1, email: 'test@example.com'},
       process.env.JWT_SECRET as string,
     )
     const res = await request
@@ -72,7 +72,7 @@ describe('Products API', () => {
   })
 
   it('PUT /api/products/:id -> 401 without token', async () => {
-    const payload = {nombre: 'No Auth'}
+    const payload = {name: 'No Auth'}
     const res = await request.put('/api/products/1').send(payload)
     expect(res.status).toBe(401)
   })

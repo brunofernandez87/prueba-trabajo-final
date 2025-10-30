@@ -9,8 +9,8 @@ describe('Product Service', () => {
 
   it('getProductById devuelve producto existente', async () => {
     const p = await productService.getProductById(1)
-    expect(p).toHaveProperty('id_producto')
-    expect(p.id_producto).toBe(1)
+    expect(p).toHaveProperty('id_product')
+    expect(p.id_product).toBe(1)
   })
 
   it('getProductById lanza error si no existe', async () => {
@@ -19,25 +19,25 @@ describe('Product Service', () => {
 
   it('create/update/delete funcionan correctamente', async () => {
     const producto: any = {
-      id_producto: 123456,
-      nombre: 'Primer producto',
-      descripcion: 'producto de prueba',
-      categoria: 'prueba',
-      precio: 1,
+      id_product: 123456,
+      name: 'Primer producto',
+      description: 'producto de prueba',
+      category: 'prueba',
+      price: 1,
       stock: 1,
     }
     const created = await productService.createProduct(producto)
-    expect(created).toHaveProperty('id_producto')
+    expect(created).toHaveProperty('id_product')
 
     const updated = await productService.updateProduct(123456, {
-      nombre: 'Editado',
-      descripcion: 'editar',
-      precio: 2,
+      name: 'Editado',
+      description: 'editar',
+      price: 2,
       stock: 3,
-      categoria: 'edit',
+      category: 'edit',
     } as any)
     expect(updated).toBeDefined()
-    expect(updated.nombre).toBe('Editado')
+    expect(updated.name).toBe('Editado')
 
     const del = await productService.deleteProduct(123456)
     expect(del).toHaveProperty('message')

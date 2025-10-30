@@ -1,42 +1,42 @@
 import {describe, it, expect} from 'vitest'
 import * as userService from '../../src/services/user.Service'
-import users from '../../src/mock/usuariosMock.json'
-import {Usuario} from '../../src/models'
+import users from '../../src/mock/userMock.json'
+import user from '../../src/models/user'
 
 describe('User Service', () => {
   it('register crea un usuario nuevo y evita duplicados', async () => {
-    const usuario: any = {
-      id_usuario: 13,
+    const user: any = {
+      id_user: 13,
       nombre: 'UTest',
-      email: 'usuariotest@email.com',
+      email: 'usertest@email.com',
       password_hash: 'secret',
     }
-    const created = await userService.register(usuario)
+    const created = await userService.register(user)
     expect(created).toHaveProperty('email')
 
-    await expect(userService.register(usuario)).rejects.toThrow()
+    await expect(userService.register(user)).rejects.toThrow()
   })
 
   it('login valida credenciales existentes', async () => {
-    // Usamos un usuario del mock (comparamos password_raw con password_hash)
-    const usuarioMock = users[0]
+    // Usamos un user del mock (comparamos password_raw con password_hash)
+    const userMock = users[0]
     const logged = await userService.login(
-      usuarioMock.email,
-      usuarioMock.password_hash,
+      userMock.email,
+      userMock.password_hash,
     )
     expect(logged).toHaveProperty('email')
-    expect(logged.email).toBe(usuarioMock.email)
+    expect(logged.email).toBe(userMock.email)
   })
 
-  it('borrar elimina usuario por email+password', async () => {
-    const usuario: Usuario = {
-      id_usuario: 9997,
+  it('borrar elimina user por email+password', async () => {
+    const user: user = {
+      id_user: 9997,
       nombre: 'BDel',
-      email: 'usuarioeliminar@email.com',
+      email: 'usereliminar@email.com',
       password_hash: 'contraseñaborrar',
     }
-    await userService.register(usuario)
-    const res = await userService.borrar(usuario.email, usuario.password_hash)
+    await userService.register(user)
+    const res = await userService.eliminate(user.email, user.password_hash)
     expect(res).toHaveProperty('message')
   })
 })
