@@ -1,5 +1,10 @@
 import {Router} from 'express'
-import {registerUser, loginUser} from '../controllers/user.Controller'
+import {
+  registerUser,
+  loginUser,
+  recoveryPassword,
+  deleteUser,
+} from '../controllers/user.Controller'
 
 const router = Router()
 
@@ -10,5 +15,6 @@ router.post('/register', registerUser)
 // Ruta para Iniciar Sesión
 // POST /api/users/login
 router.post('/login', loginUser)
-
+router.post('/recovery', recoveryPassword)
+router.post('/delete', deleteUser)
 export default router

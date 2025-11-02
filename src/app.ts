@@ -2,10 +2,10 @@ import express, {Application, Request, Response} from 'express'
 import cors from 'cors'
 import userRoutes from './routes/user.Routes'
 import productRoutes from './routes/product.Routes'
-import reporteRoute from './routes/reporte.Routes'
-import pedidoRoutes from './routes/pedido.Routes'
-import detallePedidoRoutes from './routes/detallePedido.Routes'
-import consultaRoutes from './routes/consulta.Routes'
+import reportRoute from './routes/report.Routes'
+import orderRoutes from './routes/order.Routes'
+import orderDetailRoutes from './routes/orderDetail.Routes'
+import consultationRoutes from './routes/consultation.Routes'
 
 const app: Application = express()
 
@@ -19,9 +19,9 @@ app.get('/', (req: Request, res: Response) => {
 })
 app.use('/api/users', userRoutes)
 app.use('/api/products', productRoutes)
-app.use('/api/reportes', reporteRoute)
-app.use('/api/pedido', pedidoRoutes)
-app.use('/api/pedido', detallePedidoRoutes)
-app.use('/api/consulta', consultaRoutes)
+app.use('/api/report', reportRoute)
+app.use('/api/order', orderRoutes)
+app.use('/api/detail', orderDetailRoutes)
+app.use('/api/consultation', consultationRoutes)
 
 export default app
