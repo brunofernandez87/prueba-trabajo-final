@@ -1,4 +1,5 @@
 Cosas que faltan hacer:
+- Funcion, Ruta y todo lo necesario para cambiar contraseña.
 - Documentación técnica:
   • Introducción y objetivos del proyecto
   • Descripción de la arquitectura y diseño (diagramas, si corresponden)
