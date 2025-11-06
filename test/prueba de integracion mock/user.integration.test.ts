@@ -104,7 +104,7 @@ describe('Pruebas de integración para Usuarios (Mock)', () => {
         from: '"Ecommerce" <no-reply@agro.com>',
         to: email,
         subject: 'restablecer contraseña',
-        html: `<h1>contraseña restablecida a contra restaurar</h1>`,
+        html: '<h1>contraseña restablecida a contra restaurar</h1>',
       })
       expect(response.status).toBe(200)
     })
