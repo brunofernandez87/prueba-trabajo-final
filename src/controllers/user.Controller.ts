@@ -20,8 +20,9 @@ export const loginUser = async (req: Request, res: Response) => {
   try {
     const {email, password} = req.body
     const user = await userService.login(email, password)
+    const token = user.token
     const username = user.name
-    res.status(200).json({message: 'Login exitoso', username})
+    res.status(200).json({message: 'Login exitoso', username, token})
   } catch (error) {
     if (error instanceof Error) {
       res.status(401).json({message: error.message})

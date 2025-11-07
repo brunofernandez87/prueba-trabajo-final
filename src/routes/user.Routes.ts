@@ -18,7 +18,7 @@ router.post('/register', registerUser)
 // POST /api/users/login
 router.post('/login', loginUser)
 router.post('/recovery', recoveryPassword)
-router.post('/delete', deleteUser)
+router.delete('/delete', deleteUser)
 
 // Ruta para Cambiar Contraseña
 /*Agregue `authMiddleware` para que sólo usuarios autenticados puedan cambiar contraseña.

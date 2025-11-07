@@ -15,7 +15,7 @@ router.get('/', getAllProducts)
 router.get('/:id', getProductById)
 
 // Rutas Protegidas (solo usuarios autenticados pueden crear, actualizar o borrar)
-router.post('/', createProduct)
+router.post('/', authMiddleware, createProduct)
 router.put('/:id', authMiddleware, updateProduct)
 router.delete('/:id', authMiddleware, deleteProduct)
 

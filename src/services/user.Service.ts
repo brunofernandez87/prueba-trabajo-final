@@ -2,6 +2,7 @@ import User from '../models/user'
 import data from '../mock/userMock.json'
 import nodemailer from 'nodemailer'
 import bcrypt from 'bcryptjs'
+import jwt from 'jsonwebtoken'
 
 const transport = nodemailer.createTransport({
   host: process.env.Email_host,
@@ -19,34 +20,47 @@ export const register = async (userData: User) => {
     throw new Error('El correo electrónico ya está en uso')
   }
   const newUser = await new User(userData)
+  const salt = await bcrypt.genSalt(10)
+  const hashed = await bcrypt.hash(newUser.password_hash, salt)
+  newUser.password_hash = hashed
   data.push(newUser)
   return newUser
 }
 
 // Función para el LOGIN
 export const login = async (email: string, password_raw: string) => {
-  const user = await data.find(
-    u => u.email === email && u.password_hash === password_raw,
-  )
+  const user = await data.find(u => u.email === email)
 
   if (!user) {
     throw new Error('Credenciales inválidas')
   }
+  const isMatch = await bcrypt.compare(password_raw, user.password_hash)
+  if (!isMatch) {
+    throw new Error('Contra invalida')
+  }
+  const payload = {
+    id: user.id_user,
+    email: user.email,
+    rol: user.id_rol,
+  }
+  const name = user.name
+  const secret = process.env.JWT_SECRET as string
+  const token = jwt.sign(payload, secret, {expiresIn: '1h'})
 
-  return user
+  return {name, token}
 }
 export const eliminate = async (email: string, password: string) => {
-  const user = await data.find(
-    u => u.email === email && u.password_hash === password,
-  )
+  const user = await data.find(u => u.email === email)
   if (user) {
-    const user = data.findIndex(
-      u => u.email === email && u.password_hash === password,
-    )
-    if (user >= 0) data.splice(user, 1)
+    const isMatch = await bcrypt.compare(password, user.password_hash)
+    if (!isMatch) {
+      throw new Error('Contra invalida')
+    }
+    const userIN = data.findIndex(u => u.email === email)
+    if (userIN >= 0) data.splice(userIN, 1)
     return {message: 'Usuario eliminado'}
   }
-  return {message: 'Credenciales invalidas'}
+  throw new Error('Credenciales invalidas')
 }
 
 //El login se hace con email y password_raw.
@@ -56,7 +70,10 @@ export const recoveryPassword = async (email: string) => {
     throw new Error('El email no esta asociado con una cuenta')
   }
   try {
-    user.password_hash = 'contra restaurar'
+    const password = 'contraRestaurar'
+    const salt = await bcrypt.genSalt(10)
+    const hashed = await bcrypt.hash(password, salt)
+    user.password_hash = hashed
     // cambiar a una funcion que pase una contraseña
     await transport.sendMail({
       from: '"Ecommerce" <no-reply@agro.com>',
