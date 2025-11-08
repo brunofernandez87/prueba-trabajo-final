@@ -1,13 +1,16 @@
-import {describe, it, expect} from 'vitest'
+import {describe, it, expect, beforeAll} from 'vitest'
 import * as userService from '../../src/services/user.Service'
 import users from '../../src/mock/userMock.json'
 import user from '../../src/models/user'
-
+beforeAll(() => {
+  // Aseguramos una secret para pruebas
+  process.env.JWT_SECRET = process.env.JWT_SECRET || 'testsecret'
+})
 describe('User Service', () => {
   it('register crea un usuario nuevo y evita duplicados', async () => {
     const user: any = {
       id_user: 13,
-      nombre: 'UTest',
+      name: 'UTest',
       email: 'usertest@email.com',
       password_hash: 'secret',
     }
@@ -19,13 +22,11 @@ describe('User Service', () => {
 
   it('login valida credenciales existentes', async () => {
     // Usamos un user del mock (comparamos password_raw con password_hash)
-    const userMock = users[0]
-    const logged = await userService.login(
-      userMock.email,
-      userMock.password_hash,
-    )
-    expect(logged).toHaveProperty('email')
-    expect(logged.email).toBe(userMock.email)
+    const userMock = users[10]
+    const email = userMock.email
+    const password = 'secret'
+    const logged = await userService.login(email, password)
+    expect(logged.name).toBe('UTest')
   })
 
   it('borrar elimina user por email+password', async () => {

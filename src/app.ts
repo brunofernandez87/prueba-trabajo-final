@@ -1,4 +1,5 @@
 import express, {Application, Request, Response} from 'express'
+import dotenv from 'dotenv'
 import cors from 'cors'
 import userRoutes from './routes/user.Routes'
 import productRoutes from './routes/product.Routes'
@@ -6,7 +7,7 @@ import reportRoute from './routes/report.Routes'
 import orderRoutes from './routes/order.Routes'
 import orderDetailRoutes from './routes/orderDetail.Routes'
 import consultationRoutes from './routes/consultation.Routes'
-
+dotenv.config()
 const app: Application = express()
 
 app.use(cors())

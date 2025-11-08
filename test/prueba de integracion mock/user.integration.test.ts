@@ -70,10 +70,11 @@ describe('Pruebas de integración para Usuarios (Mock)', () => {
 
   describe('POST /api/users/login', () => {
     it('Debería iniciar sesión con credenciales válidas', async () => {
-      const userExisting = mockUser[1]
+      const userExisting = mockUser[10]
+      const password = 'password123'
       const response = await request.post('/api/users/login').send({
         email: userExisting.email,
-        password: userExisting.password_hash, // El mock usa el hash como si fuera la contraseña raw
+        password,
       })
 
       expect(response.status).toBe(200)
@@ -104,17 +105,18 @@ describe('Pruebas de integración para Usuarios (Mock)', () => {
         from: '"Ecommerce" <no-reply@agro.com>',
         to: email,
         subject: 'restablecer contraseña',
-        html: `<h1>contraseña restablecida a contra restaurar</h1>`,
+        html: '<h1>contraseña restablecida a contraRestaurar</h1>',
       })
       expect(response.status).toBe(200)
     })
   })
   describe('Post /api/users/delete', () => {
     it('deberia eliminar el usuario con email y contraseña', async () => {
-      const userDelete = {...mockUser[0]}
-      const response = await request.post('/api/users/delete').send({
+      const userDelete = {...mockUser[10]}
+      const password = 'password123'
+      const response = await request.delete('/api/users/delete').send({
         email: userDelete.email,
-        password: userDelete.password_hash,
+        password,
       })
       expect(response.status).toBe(200)
       expect(response.body.message).toBe('Usuario eliminado')

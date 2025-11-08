@@ -1,11 +1,6 @@
-import {describe, it, expect, beforeAll} from 'vitest'
-import {request} from '../../utils/request'
+import {describe, it, expect} from 'vitest'
+import {request, token} from '../../utils/request'
 import jwt from 'jsonwebtoken'
-
-beforeAll(() => {
-  // Aseguramos una secret para pruebas
-  process.env.JWT_SECRET = process.env.JWT_SECRET || 'testsecret'
-})
 
 describe('Products API', () => {
   it('GET /api/products -> 200 and an array', async () => {
@@ -31,7 +26,10 @@ describe('Products API', () => {
       precio: 1.23,
       stock: 5,
     }
-    const res = await request.post('/api/products').send(payload)
+    const res = await request
+      .post('/api/products')
+      .set('Authorization', `Bearer ${token}`)
+      .send(payload)
     expect(res.status).toBe(201)
     expect(res.body).toHaveProperty('message')
     expect(res.body.product).toHaveProperty('id_product')
@@ -39,10 +37,6 @@ describe('Products API', () => {
   })
 
   it('PUT /api/products/:id -> 200 update product (protected)', async () => {
-    const token = jwt.sign(
-      {id_user: 1, email: 'test@example.com'},
-      process.env.JWT_SECRET as string,
-    )
     const payload = {
       name: 'Updated Name',
       description: 'Updated',

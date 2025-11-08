@@ -2,7 +2,7 @@ import {describe, it, expect} from 'vitest'
 import request from 'supertest'
 import app from './../../src/app'
 import mockProduct from '../../src/mock/productMock.json'
-
+import {token} from '../utils/request'
 describe('Pruebas de integración para productos (Mock)', () => {
   describe('GET /api/products', () => {
     it('Debería retornar todos los productos del mock', async () => {
@@ -41,7 +41,10 @@ describe('Pruebas de integración para productos (Mock)', () => {
         category: 'Pruebas',
       }
 
-      const response = await request(app).post('/api/products').send(newOrder)
+      const response = await request(app)
+        .post('/api/products')
+        .set('Authorization', `Bearer ${token}`)
+        .send(newOrder)
 
       expect(response.status).toBe(201)
       expect(response.body.message).toBe('Producto creado con éxito')

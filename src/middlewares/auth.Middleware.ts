@@ -1,9 +1,10 @@
 import {Request, Response, NextFunction} from 'express'
 import jwt from 'jsonwebtoken'
+import User from '../models/user'
 
 // Extendemos la interfaz de Request para poder añadir la propiedad 'user'
 interface AuthRequest extends Request {
-  user?: any
+  user?: User | string | object
 }
 
 export const authMiddleware = (
@@ -28,6 +29,8 @@ export const authMiddleware = (
     req.user = decoded // Guardamos los datos del usuario en la request
     next() // El token es válido, continuamos a la ruta
   } catch (error) {
-    res.status(403).json({message: 'Token inválido o expirado.'})
+    if (error instanceof Error) {
+      res.status(403).json({message: 'Token inválido o expirado.'})
+    }
   }
 }
