@@ -5,7 +5,7 @@ import Rol from './Rol'
 import Order from './order'
 import Product from './product'
 import OrderDetail from './orderDetail'
-import Consultation from './Consultation'
+import {Consultation} from '../models'
 import Report from './report'
 
 // 4. Exportar todo para que el resto de la app lo use
