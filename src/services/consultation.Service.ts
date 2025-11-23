@@ -1,4 +1,4 @@
-import Consultation from '../models/Consultation'
+import {Consultation} from '../models'
 import data from '../mock/consultationMock.json'
 export const createConsultation = async (consultationData: Consultation) => {
   const consultation = await new Consultation(consultationData)
