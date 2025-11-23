@@ -79,7 +79,7 @@ export const recoveryPassword = async (email: string) => {
       from: '"Ecommerce" <no-reply@agro.com>',
       to: email,
       subject: 'restablecer contraseña',
-      html: `<h1>contraseña restablecida a ${user.password_hash}</h1>`,
+      html: `<h1>contraseña restablecida a ${password}</h1>`,
     })
     return {success: true}
   } catch (error) {
