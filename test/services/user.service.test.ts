@@ -22,7 +22,7 @@ describe('User Service', () => {
 
   it('login valida credenciales existentes', async () => {
     // Usamos un user del mock (comparamos password_raw con password_hash)
-    const userMock = users[10]
+    const userMock = users[11]
     const email = userMock.email
     const password = 'secret'
     const logged = await userService.login(email, password)
@@ -32,7 +32,7 @@ describe('User Service', () => {
   it('borrar elimina user por email+password', async () => {
     const user: user = {
       id_user: 9997,
-      nombre: 'BDel',
+      name: 'BDel',
       email: 'usereliminar@email.com',
       password_hash: 'contraseñaborrar',
     }

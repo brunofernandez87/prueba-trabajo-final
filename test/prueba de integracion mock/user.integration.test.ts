@@ -38,7 +38,7 @@ describe('Pruebas de integración para Usuarios (Mock)', () => {
   describe('POST /api/users/register', () => {
     it('Debería registrar un nuevo usuario con éxito', async () => {
       const newUser = {
-        id_user: 11,
+        id_user: 12,
         name: 'Usuario Prueba',
         email: 'prueba@test.com',
         password_hash: 'password123', // El mock no usa bcrypt
@@ -70,7 +70,7 @@ describe('Pruebas de integración para Usuarios (Mock)', () => {
 
   describe('POST /api/users/login', () => {
     it('Debería iniciar sesión con credenciales válidas', async () => {
-      const userExisting = mockUser[10]
+      const userExisting = mockUser[11]
       const password = 'password123'
       const response = await request.post('/api/users/login').send({
         email: userExisting.email,
@@ -112,7 +112,7 @@ describe('Pruebas de integración para Usuarios (Mock)', () => {
   })
   describe('Post /api/users/delete', () => {
     it('deberia eliminar el usuario con email y contraseña', async () => {
-      const userDelete = {...mockUser[10]}
+      const userDelete = {...mockUser[11]}
       const password = 'password123'
       const response = await request.delete('/api/users/delete').send({
         email: userDelete.email,
