@@ -3,7 +3,9 @@ interface UserAttributes {
   name: string
   email: string
   password_hash: string
-  id_rol: number | null
+  rol: string | null
   create: string
+  image: string
+  username: string
 }
 export default UserAttributes

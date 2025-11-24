@@ -5,14 +5,18 @@ class User implements UserAttributes {
   public name!: string
   public email!: string
   public password_hash!: string
-  public id_rol!: number | 1
+  public rol!: string | 'cliente'
   public readonly create!: string
+  public image!: string
+  public username!: string
   constructor(userData: User) {
     this.id_user = userData.id_user
     this.name = userData.name
     this.email = userData.email
     this.password_hash = userData.password_hash
-    this.id_rol = 1
+    this.rol = 'cliente'
+    this.image = userData.image
+    this.username = userData.username
     this.create = '23/10/25'
   }
 }
