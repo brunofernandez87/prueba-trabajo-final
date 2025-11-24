@@ -41,7 +41,8 @@ export const login = async (email: string, password_raw: string) => {
   const payload = {
     id: user.id_user,
     email: user.email,
-    rol: user.id_rol,
+    rol: user.rol,
+    username: user.username,
   }
   const name = user.name
   const secret = process.env.JWT_SECRET as string
